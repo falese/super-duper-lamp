@@ -1,7 +1,8 @@
+require('dotenv').config()
 const express = require('express');
 const {buildSchema} = require('graphql');
 const {graphqlHTTP} = require('express-graphql');
-
+const port = process.env.PORT
 const schema = buildSchema(`
     type Query {
         hello: String
@@ -22,6 +23,6 @@ app.use("/graphql", graphqlHTTP({
     graphiql: true
 }));
 
-app.listen(4000);
+app.listen(port);
 
-console.log('GraphQL API is LIVE at localhost:4000')
+console.log(`GraphQL is LIVE at localhost:${port}`)
